@@ -1,0 +1,25 @@
+.pagination{
+    display: flex;
+    justify-content: space-around;
+   
+    .counter{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+         font-weight: 600;
+    }
+    .previous{
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .disable{
+        color: #dad4d4;
+        cursor: not-allowed;
+    }
+
+    .next{
+         font-weight: 600;
+         cursor: pointer;
+    }
+}

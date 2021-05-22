@@ -1,9 +1,24 @@
-.cardList{
-     padding: 50px;
+.cardList {
+  padding: 50px;
 
-    .cardlist-header{
-        display: flex;
-        justify-content: space-around;
-       
+  .cardlist-header {
+    display: flex;
+    justify-content: space-around;
+  }
+  .upper {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumGB) var(--scrollbarBG);
+     height: 60vh;
+     padding: 20px;
+    &::-webkit-scrollbar {
+      width: 20%;
     }
+    .card-display {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 55px;
+      justify-content: center;
+    }
+  }
 }

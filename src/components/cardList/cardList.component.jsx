@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import {listOfDataResults} from '../../redux/fetchedData/fetched.selector';
-import {setData} from '../../redux/fetchedData/fetched.action'
+import {
+  currentResult,
+  listOfDataResults,
+} from "../../redux/fetchedData/fetched.selector";
+import { setData } from "../../redux/fetchedData/fetched.action";
+import Card from "../../components/card/card.component";
 import "./cardList.styles.scss";
 
-const CardList = ({setData, results}) => {
-    console.log({results})
+const CardList = ({ setData, results, listResults }) => {
+  console.log({ results });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,13 +28,19 @@ const CardList = ({setData, results}) => {
     };
     fetchData();
   }, [setData]);
-  
+
   const resultsLength = () => {
-      if(results !== null){
-          return results.length
-      }
-  }
-  const ren = resultsLength()
+    if (listResults !== null) {
+      return listOfDataResults.length;
+    }
+  };
+  //   const resultNull = () => {
+  //     if (results !== null) {
+  //       return results;
+  //     }
+  //   };
+
+  const ren = resultsLength();
   return (
     <div className="cardList">
       <div className="cardlist-header">
@@ -40,6 +50,7 @@ const CardList = ({setData, results}) => {
             display: "flex",
             justifyContent: "center",
             fontWeight: "500",
+            marginBottom: "30px",
           }}
         >
           All Templates
@@ -52,17 +63,32 @@ const CardList = ({setData, results}) => {
             color: "#989898",
           }}
         >
-          {ren} Templates
+          {listResults?.length} Templates
         </span>
+      </div>
+      <div className="upper">
+        <div className="card-display">
+          {results &&
+            results
+              .filter((result, index) => index < 30)
+              .map((result, index) => (
+                <Card
+                  key={index}
+                  name={result.name}
+                  description={result.description}
+                />
+              ))}
+        </div>
       </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  results: listOfDataResults,
+  results: currentResult,
+  listResults: listOfDataResults,
 });
 const mapDispatchToProps = (dispatch) => ({
   setData: (data) => dispatch(setData(data)),
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(CardList);

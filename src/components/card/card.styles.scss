@@ -1,0 +1,30 @@
+.card{
+    // border: 1px solid black;
+    // width: 20%;
+    height: 25vh;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 30px 40px rgba(0,0,0,.1);
+    .card-title {
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 16px
+    }
+
+    .card-description {
+        font-weight: 400;
+        font-size: 16px;
+         padding: 16px
+    }
+
+    .card-link {
+        background: #F9F9F9;
+        align-items: center;
+        padding: 16px;
+        color: #08BD37;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
