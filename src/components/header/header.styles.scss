@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .search {
+      margin-top: 30px;
+    .fas {
+    position: relative;
+    right: -212px;
+    bottom: 36px;
+      
+    }
+  }
+
+  .sorted {
+    display: flex;
+    justify-content: stretch;
+    grid-gap: 70px;
+    align-items: center;
+    
+    fieldset{
+        border:  3px solid #dad4d4;
+        border-radius: 5px;
+    }
+  }
+}
