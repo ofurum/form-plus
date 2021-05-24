@@ -34,11 +34,7 @@ const CardList = ({ setData, results, listResults }) => {
       return listOfDataResults.length;
     }
   };
-  //   const resultNull = () => {
-  //     if (results !== null) {
-  //       return results;
-  //     }
-  //   };
+
 
   const ren = resultsLength();
   return (

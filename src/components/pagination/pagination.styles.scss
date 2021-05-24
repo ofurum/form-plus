@@ -1,7 +1,9 @@
 .pagination{
     display: flex;
     justify-content: space-around;
-   
+    padding: 9px;
+    margin-bottom: 16px;
+    align-items: center;
     .counter{
         display: flex;
         justify-content: space-between;

@@ -8,3 +8,20 @@
     border-radius: 2px;
     margin-top: 80px;
 }
+
+
+@media only screen and (max-width: 600px){
+    .banner{
+    width: 100%;
+    margin-left: 0px;
+    
+     .ban-text{
+         text-align: center;
+     }
+
+     .warning-icon{
+         display: none;
+     }
+    }
+
+}

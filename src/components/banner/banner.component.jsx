@@ -14,6 +14,8 @@ const Banner = () => (
           fontWeight: "600",
           gridGap: '10px'
         }}
+
+        className="ban-text"
       >
         <svg
           width="25"
@@ -21,6 +23,7 @@ const Banner = () => (
           viewBox="0 0 25 25"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="warning-icon"
         >
           <path
             fill-rule="evenodd"

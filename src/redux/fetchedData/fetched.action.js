@@ -9,3 +9,13 @@ export const paginateData = ({ newPage, offset }) => ({
   type: dataTypes.PAGINATE_DATA,
   payload: { newPage, offset },
 });
+
+export const sortByAlphabet = (payload) => ({
+  type: dataTypes.SORT_BY_ALPHABET,
+  payload,
+});
+
+export const filterTemplates = (value) => ({
+  type: dataTypes.FILTERED_TEMPLATES,
+  payload: value
+})

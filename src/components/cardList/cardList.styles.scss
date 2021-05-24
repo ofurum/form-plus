@@ -9,8 +9,8 @@
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: var(--thumGB) var(--scrollbarBG);
-     height: 60vh;
-     padding: 20px;
+    height: 60vh;
+    padding: 20px;
     &::-webkit-scrollbar {
       width: 20%;
     }
@@ -21,4 +21,22 @@
       justify-content: center;
     }
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .cardList {
+    padding: 10px;
+
+
+
+    .upper {
+    .card-display {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 35px;
+      justify-content: center;
+    }
+  }
+  }
+
 }
