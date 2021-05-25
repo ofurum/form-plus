@@ -19,3 +19,8 @@ export const filterTemplates = (value) => ({
   type: dataTypes.FILTERED_TEMPLATES,
   payload: value
 })
+
+export const setCurrentCategory = (category) =>({
+  type: dataTypes.FILTERED_CATEGORY,
+  payload: category,
+})

@@ -16,3 +16,8 @@ export const currentResult  = createSelector(
     [dataResults],
     (data) => data.currentResult
 )
+
+export const currentCategory = createSelector(
+    [dataResults],
+    (category) => category.currentCategory
+);

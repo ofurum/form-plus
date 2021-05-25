@@ -5,6 +5,7 @@ const INITIALIZE_STATE = {
   results: null,
   currentResult: [],
   currentPage: 1,
+  currentCategory: "All"
 };
 
 const filterCurrent = (state, { payload }) => {
@@ -20,6 +21,28 @@ const filterCurrent = (state, { payload }) => {
     currentPage: newPage,
   };
 };
+
+const filterTemplate = (state, {payload}) => {
+   if(!payload.length) return { ...state, currentResult: state.results };
+        return {
+          ...state,
+          currentResult: state.currentResult.filter((result) =>
+            result.name.toLowerCase().includes(payload.toLowerCase())
+          ),
+        };
+}
+
+const filterCategory = (state, { payload }) => {
+  if (!payload.length) return { ...state, currentResult: state.results };
+  return {
+    ...state,
+    currentResult: payload.toLowerCase() === "All" ? state.result:  state.currentResult.filter((result) =>
+      result.category.includes(payload)
+    ),
+    currentCategory: payload
+  };
+};
+
 const fetchedDataReducer = (state = INITIALIZE_STATE, action) => {
   if (action.type === dataTypes.FETCHED_DATA) {
     return {
@@ -34,8 +57,20 @@ const fetchedDataReducer = (state = INITIALIZE_STATE, action) => {
   if (action.type === dataTypes.SORT_BY_ALPHABET) {
     return {
       ...state,
-      sortByAlphabet: action.payload.location === "asc" ? sortAsc(state.currentResult, "name") : sortDesc(state.currentResult, "name"),
+      currentResult:
+        action.payload.direction === "asc"
+          ? sortAsc(state.results, "name")
+          : sortDesc(state.results, "name"),
     };
+  };
+
+  if(action.type === dataTypes.FILTERED_TEMPLATES){
+    window.scrollTo(0, 500)
+    return  filterTemplate(state, action)
+  };
+
+  if(action.type === dataTypes.FILTERED_CATEGORY){
+    return filterCategory(state, action)
   }
   return state;
 };

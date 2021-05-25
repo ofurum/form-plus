@@ -5,12 +5,13 @@ import { createStructuredSelector } from "reselect";
 import {
   currentResult,
   listOfDataResults,
+  currentCategory,
 } from "../../redux/fetchedData/fetched.selector";
 import { setData } from "../../redux/fetchedData/fetched.action";
 import Card from "../../components/card/card.component";
 import "./cardList.styles.scss";
 
-const CardList = ({ setData, results, listResults }) => {
+const CardList = ({ setData, results, listResults, currentCategory }) => {
   console.log({ results });
   useEffect(() => {
     const fetchData = async () => {
@@ -29,14 +30,16 @@ const CardList = ({ setData, results, listResults }) => {
     fetchData();
   }, [setData]);
 
-  const resultsLength = () => {
-    if (listResults !== null) {
-      return listOfDataResults.length;
-    }
-  };
+  useEffect(() => {
+    console.log("results =====>", results);
+  }, [results]);
+  // const resultsLength = () => {
+  //   if (listResults !== null) {
+  //     return listOfDataResults.length;
+  //   }
+  // };
 
-
-  const ren = resultsLength();
+  // const ren = resultsLength();
   return (
     <div className="cardList">
       <div className="cardlist-header">
@@ -49,7 +52,7 @@ const CardList = ({ setData, results, listResults }) => {
             marginBottom: "30px",
           }}
         >
-          All Templates
+          {currentCategory} Templates
         </span>
         <span
           style={{
@@ -83,6 +86,7 @@ const CardList = ({ setData, results, listResults }) => {
 const mapStateToProps = createStructuredSelector({
   results: currentResult,
   listResults: listOfDataResults,
+  currentCategory: currentCategory,
 });
 const mapDispatchToProps = (dispatch) => ({
   setData: (data) => dispatch(setData(data)),
