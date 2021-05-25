@@ -24,3 +24,8 @@ export const setCurrentCategory = (category) =>({
   type: dataTypes.FILTERED_CATEGORY,
   payload: category,
 })
+
+export const setCurrentDate = (date)=> ({
+  type: dataTypes.FILTERED_DATE,
+  payload: date
+})

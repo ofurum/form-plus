@@ -1,7 +1,7 @@
 import { dataTypes } from "./fetched.type";
 import { sortAsc, sortDesc } from "./utils";
 
-const INITIALIZE_STATE = {
+export const INITIALIZE_STATE = {
   results: null,
   currentResult: [],
   currentPage: 1,
@@ -30,6 +30,20 @@ const filterTemplate = (state, {payload}) => {
             result.name.toLowerCase().includes(payload.toLowerCase())
           ),
         };
+}
+
+const filterDate = (state, {payload}) => {
+     if (!payload.length) return { ...state, currentResult: state.results };
+     return {
+       ...state,
+       currentResult:
+         payload.toLowerCase() === "Default"
+           ? state.result
+           : state.currentResult.filter((result) =>
+               result.created.includes(payload)
+             ),
+       currentCategory: payload,
+     };
 }
 
 const filterCategory = (state, { payload }) => {
@@ -72,6 +86,15 @@ const fetchedDataReducer = (state = INITIALIZE_STATE, action) => {
   if(action.type === dataTypes.FILTERED_CATEGORY){
     return filterCategory(state, action)
   }
+   if(action.type === dataTypes.FILTERED_DATE){
+     return {
+       ...state,
+       currentResult:
+         action.payload.direction === "order"
+           ? sortAsc(state.results, "category")
+           : sortDesc(state.results, "category"),
+     };
+   }
   return state;
 };
 

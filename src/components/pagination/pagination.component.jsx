@@ -6,13 +6,14 @@ import {currentPageCounter} from '../../redux/fetchedData/fetched.selector'
 import './pagination.styles.scss';
 
 
-const Pagination = ({ onPrevious, paginateData, currentPage }) => {
+export const Pagination = ({ onPrevious, paginateData, currentPage }) => {
     console.log({currentPage})
   return (
     <div className="pagination">
       <button
         onClick={() => paginateData({ newPage: currentPage - 1, offset: 49 })}
         className="previous"
+        data-test-id="previous"
         disabled={currentPage <= 1}
       >
         <span>Previous</span>
@@ -22,7 +23,14 @@ const Pagination = ({ onPrevious, paginateData, currentPage }) => {
           {" "}
           &nbsp;&nbsp;&nbsp;&nbsp;{currentPage}&nbsp;&nbsp;&nbsp;&nbsp;of 14
         </span>
-        <span style={{ position: "relative", left: "-72px", zIndex: "-1" , marginTop: "5px"}}>
+        <span
+          style={{
+            position: "relative",
+            left: "-72px",
+            zIndex: "-1",
+            marginTop: "5px",
+          }}
+        >
           <svg
             width="32"
             height="32"
@@ -43,6 +51,8 @@ const Pagination = ({ onPrevious, paginateData, currentPage }) => {
         </span>
       </div>
       <button
+        data-test-id="next"
+        id="next"
         onClick={() => paginateData({ newPage: currentPage + 1, offset: 49 })}
         className="next"
         disabled={currentPage >= 14}
@@ -59,4 +69,6 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   paginateData: (data) => dispatch(paginateData(data)),
 });
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

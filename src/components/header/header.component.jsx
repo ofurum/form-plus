@@ -23,7 +23,8 @@ const Header = ({ sortByAlphabet, filterTemplate, setCurrentCategory }) => {
   };
 
   const refresh = () => {
-    return localStorage.clear();
+    return window.location.reload();
+
   };
 const handleClick = () => {
   setIsCliked(!isClicked)
@@ -100,7 +101,9 @@ const handleClick = () => {
                 style={{ border: "none", width: "100%" }}
                 onChange={sortByInput}
               >
-                <option value="default">Default</option>
+                <option value="default" onClick={refresh}>
+                  Default
+                </option>
                 <option value="alphabet_asc">Ascending</option>
                 <option value="alphabet_dsc">Descending </option>
               </select>
