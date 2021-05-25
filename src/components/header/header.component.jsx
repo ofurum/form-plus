@@ -13,7 +13,6 @@ const Header = ({ sortByAlphabet, filterTemplate, setCurrentCategory }) => {
     localStorage.clear();
     let value = e.target.value;
     let direction = value.endsWith("asc") ? "asc" : "dsc";
-    console.log("dir>>>>>>", direction);
 
     return sortByAlphabet({ direction });
   };
@@ -102,8 +101,8 @@ const handleClick = () => {
                 onChange={sortByInput}
               >
                 <option value="default">Default</option>
-                <option value="alphabet_asc">ASCENDING</option>
-                <option value="alphabet_dsc">DESCENDING </option>
+                <option value="alphabet_asc">Ascending</option>
+                <option value="alphabet_dsc">Descending </option>
               </select>
             </fieldset>
           </div>
@@ -112,8 +111,8 @@ const handleClick = () => {
               <legend style={{ color: "#8F8B8B" }}>Date</legend>
               <select style={{ border: "none", width: "100%" }}>
                 <option value="All">Default</option>
-                <option value="date_ascending">ASCENDING</option>
-                <option value="alphabet_descending">DESCENDING </option>
+                <option value="date_ascending">Ascending</option>
+                <option value="alphabet_descending">Descending </option>
               </select>
             </fieldset>
           </div>

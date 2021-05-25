@@ -40,6 +40,9 @@ const CardList = ({ setData, results, listResults, currentCategory }) => {
   // };
 
   // const ren = resultsLength();
+  if(!results){
+    return <h2>Please Wait Data is being fetched...</h2>;
+  }
   return (
     <div className="cardList">
       <div className="cardlist-header">

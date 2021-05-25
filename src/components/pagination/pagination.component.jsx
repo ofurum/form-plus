@@ -10,18 +10,19 @@ const Pagination = ({ onPrevious, paginateData, currentPage }) => {
     console.log({currentPage})
   return (
     <div className="pagination">
-      <div
+      <button
         onClick={() => paginateData({ newPage: currentPage - 1, offset: 49 })}
-        className={currentPage <= 1 ? "disable" : "previous"}
+        className="previous"
+        disabled={currentPage <= 1}
       >
         <span>Previous</span>
-      </div>
+      </button>
       <div className="counter">
         <span>
           {" "}
           &nbsp;&nbsp;&nbsp;&nbsp;{currentPage}&nbsp;&nbsp;&nbsp;&nbsp;of 14
         </span>
-        <span style={{ position: "relative", left: "-80px", zIndex: "-1" }}>
+        <span style={{ position: "relative", left: "-72px", zIndex: "-1" , marginTop: "5px"}}>
           <svg
             width="32"
             height="32"
@@ -41,12 +42,13 @@ const Pagination = ({ onPrevious, paginateData, currentPage }) => {
           </svg>
         </span>
       </div>
-      <div
+      <button
         onClick={() => paginateData({ newPage: currentPage + 1, offset: 49 })}
         className="next"
+        disabled={currentPage >= 14}
       >
         <span>Next</span>
-      </div>
+      </button>
     </div>
   );
 };

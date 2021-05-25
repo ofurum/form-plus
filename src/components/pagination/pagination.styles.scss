@@ -15,9 +15,12 @@
         cursor: pointer;
     }
 
-    .disable{
-        color: #dad4d4;
-        cursor: not-allowed;
+    button{
+         background: transparent;
+         border: none;
+        &:disabled{
+            cursor: not-allowed;
+        }
     }
 
     .next{
