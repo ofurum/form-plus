@@ -59,7 +59,7 @@ const CardList = ({ setData, results, listResults, currentCategory }) => {
         </span>
         <span
           style={{
-            minWidth: "50%",
+            minWidth: "73%",
             display: "flex",
             justifyContent: "flex-end",
             color: "#989898",

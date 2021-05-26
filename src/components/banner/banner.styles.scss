@@ -1,27 +1,25 @@
-.banner{
-   display: flex;
-    justify-content: center;
-    background: #FFF4EA;
-    width: 72.3%;
-    overflow: hidden;
-    margin-left: 310px;
-    border-radius: 2px;
-    margin-top: 80px;
+.banner {
+  display: flex;
+  justify-content: center;
+  background: #fff4ea;
+  width: 83%;
+  overflow: hidden;
+  margin-left: 151px;
+  border-radius: 2px;
+  margin-top: 80px;
 }
 
-
-@media only screen and (max-width: 600px){
-    .banner{
+@media only screen and (max-width: 600px) {
+  .banner {
     width: 100%;
     margin-left: 0px;
-    
-     .ban-text{
-         text-align: center;
-     }
 
-     .warning-icon{
-         display: none;
-     }
+    .ban-text {
+      text-align: center;
     }
 
+    .warning-icon {
+      display: none;
+    }
+  }
 }
