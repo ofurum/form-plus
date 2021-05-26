@@ -4,13 +4,13 @@ import { sortByAlphabet } from "../../redux/fetchedData/fetched.action";
 import {
   filterTemplates,
   setCurrentCategory,
+  setCurrentDate,
 } from "../../redux/fetchedData/fetched.action";
 import "./header.styles.scss";
 
 const Header = ({ sortByAlphabet, filterTemplate, setCurrentCategory }) => {
   const [isClicked, setIsCliked] = useState(false);
   const sortByInput = (e) => {
-    localStorage.clear();
     let value = e.target.value;
     let direction = value.endsWith("asc") ? "asc" : "dsc";
 
@@ -21,6 +21,14 @@ const Header = ({ sortByAlphabet, filterTemplate, setCurrentCategory }) => {
     const { value } = e.target;
     setCurrentCategory(value);
   };
+
+  const handleDate = (e) => {
+    const {value} = e.target;
+     let dateDirection = value.endsWith("ascending")
+       ? "ascending"
+       : "descending";
+    setCurrentDate({ dateDirection });
+  }
 
   const refresh = () => {
     return window.location.reload();
@@ -109,13 +117,13 @@ const handleClick = () => {
               </select>
             </fieldset>
           </div>
-          <div className="section">
+          <div className="section" onChange={handleDate}>
             <fieldset style={{ width: "120%", border: "2px light #8F8B8B" }}>
               <legend style={{ color: "#8F8B8B" }}>Date</legend>
               <select style={{ border: "none", width: "100%" }}>
                 <option value="All">Default</option>
                 <option value="date_ascending">Ascending</option>
-                <option value="alphabet_descending">Descending </option>
+                <option value="date_descending">Descending </option>
               </select>
             </fieldset>
           </div>
@@ -128,6 +136,7 @@ const mapDispatchToProps = (dispatch) => ({
   sortByAlphabet: (alphabet) => dispatch(sortByAlphabet(alphabet)),
   filterTemplate: (template) => dispatch(filterTemplates(template)),
   setCurrentCategory: (category) => dispatch(setCurrentCategory(category)),
+  setCurrentDate: (date)=> dispatch(setCurrentDate(date)),
 });
 
 export default connect(null, mapDispatchToProps)(Header);

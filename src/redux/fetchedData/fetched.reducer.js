@@ -90,11 +90,11 @@ const fetchedDataReducer = (state = INITIALIZE_STATE, action) => {
      return {
        ...state,
        currentResult:
-         action.payload.direction === "order"
-           ? sortAsc(state.results, "category")
-           : sortDesc(state.results, "category"),
+         action.payload.dateDirection === "ascending"
+           ? sortAsc(state.results, "created")
+           : sortDesc(state.results, "created"),
      };
-   }
+   };
   return state;
 };
 
