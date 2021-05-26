@@ -11,7 +11,7 @@ export const INITIALIZE_STATE = {
 const filterCurrent = (state, { payload }) => {
   console.log(payload);
   const { newPage, offset } = payload;
-  const index = newPage * offset;
+  // const index = newPage * offset;
   const nextPageInitialIndex = offset * (newPage - 1);
   const lastIndex = nextPageInitialIndex + (offset - 1);
   const newData = state.results.slice(nextPageInitialIndex, lastIndex);
@@ -32,19 +32,6 @@ const filterTemplate = (state, {payload}) => {
         };
 }
 
-const filterDate = (state, {payload}) => {
-     if (!payload.length) return { ...state, currentResult: state.results };
-     return {
-       ...state,
-       currentResult:
-         payload.toLowerCase() === "Default"
-           ? state.result
-           : state.currentResult.filter((result) =>
-               result.created.includes(payload)
-             ),
-       currentCategory: payload,
-     };
-}
 
 const filterCategory = (state, { payload }) => {
   if (!payload.length) return { ...state, currentResult: state.results };
